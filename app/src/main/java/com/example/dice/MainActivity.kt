@@ -1,67 +1,59 @@
 package com.example.dice
 
+import Dice
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import java.util.Random
-import android.text.InputType;
 import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var diceTextView: TextView
-    lateinit var nameEditText: EditText
+
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        diceTextView = findViewById(R.id.textView)
-        //nameEditText = findViewById(R.id.editTextText)
-        //nameEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
-
-        var button = findViewById<Button>(R.id.button1)
-        button.setOnClickListener {
-            val name = getnameFromEditText()
-            val lastValue = name.toString()
-            rollDice(name)
-            setText(lastValue)
-            Log.d("!!!","Dice value${getnameFromEditText()}")
-            Log.d("!!!","textvalue$lastValue")
-
-        }
-    }
-    fun randomDiceNumber() : Int {
-        val random = Random()
-        val randomNum = random.nextInt(6) + 1
-        return randomNum
-    }
-    fun getnameFromEditText() : Int {
-        //val name = nameEditText.text.toString()
-        //val naem = name.toInt()
-        val random = Random()
-        //val randomInput = random.nextInt(naem) + 1
-        val randomInput = random.nextInt(6) + 1
-        return randomInput
-
-    }
-    fun rollDice(dices: Int){
         val diceImage: ImageView = findViewById(R.id.imageView)
-        when (dices) {
-            1 -> diceImage.setImageResource(R.drawable.dice_1)
-            2 -> diceImage.setImageResource(R.drawable.dice_2)
-            3 -> diceImage.setImageResource(R.drawable.dice_3)
-            4 -> diceImage.setImageResource(R.drawable.dice_4)
-            5 -> diceImage.setImageResource(R.drawable.dice_5)
-            6 -> diceImage.setImageResource(R.drawable.dice_6)
-        }
-    }
+        val diceTextView = findViewById<TextView>(R.id.textView)
+        val diceScore1 = findViewById<TextView>(R.id.p1_score1)
+        val diceScore2 = findViewById<TextView>(R.id.p1_score2)
+        val diceScore3 = findViewById<TextView>(R.id.p1_score3)
+        val diceScore4 = findViewById<TextView>(R.id.p1_score4)
+        val diceScore5 = findViewById<TextView>(R.id.p1_score5)
+        val diceP2Score1 = findViewById<TextView>(R.id.p2_score1)
+        val diceP2Score2 = findViewById<TextView>(R.id.p2_score2)
+        val diceP2Score3 = findViewById<TextView>(R.id.p2_score3)
+        val diceP2Score4 = findViewById<TextView>(R.id.p2_score4)
+        val diceP2Score5 = findViewById<TextView>(R.id.p2_score5)
+        var button2 = findViewById<Button>(R.id.button2)
+        var button1 = findViewById<Button>(R.id.button1)
+        val totalScoreP1 = findViewById<TextView>(R.id.p1_totalScore)
+        val totalScoreP2 = findViewById<TextView>(R.id.p2_totalScore)
+        diceScore1.text = ""
+        diceScore2.text = ""
+        diceScore3.text = ""
+        diceScore4.text = ""
+        diceScore5.text = ""
+        diceP2Score1.text = ""
+        diceP2Score2.text = ""
+        diceP2Score3.text = ""
+        diceP2Score4.text = ""
+        diceP2Score5.text = ""
 
-    fun setText(name :String){
-        diceTextView.text = "Dice Value $name"
+
+        val diceClass = Dice(diceTextView,diceScore1,diceScore2,diceScore3,diceScore4,diceScore5,diceP2Score1,diceP2Score2,diceP2Score3,diceP2Score4,diceP2Score5,button1,button2,diceImage,totalScoreP1,totalScoreP2)
+        button2.setOnClickListener {
+            diceClass.diceGame()
+        }
     }
 
 
 
 
 }
+
+
+
