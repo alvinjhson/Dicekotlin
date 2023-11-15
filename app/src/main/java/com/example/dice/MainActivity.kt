@@ -42,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         diceP2Score3.text = ""
         diceP2Score4.text = ""
         diceP2Score5.text = ""
+        // hello
+
 
 
         val diceClass = Dice(diceTextView,diceScore1,diceScore2,diceScore3,diceScore4,diceScore5,diceP2Score1,diceP2Score2,diceP2Score3,diceP2Score4,diceP2Score5,button1,button2,diceImage,totalScoreP1,totalScoreP2)
